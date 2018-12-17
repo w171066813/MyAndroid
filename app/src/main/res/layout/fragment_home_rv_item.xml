@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:id="@+id/fragment_home_rv_item_rl"
+    android:background="@drawable/fragment_home_rv_item_bg"
+    android:layout_height="100dp">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="16sp"
+         android:gravity="center_vertical"
+         android:layout_marginStart="20dp"
+         android:layout_marginTop="2dp"
+         android:textColor="#FFFFFF"
+         android:drawableStart="@drawable/author"
+         android:id="@+id/author"/>
+
+      <com.tianpai.cwang.myandroid.widget.MaequeeText
+         android:layout_width="wrap_content"
+         android:id="@+id/title"
+         android:layout_centerInParent="true"
+         android:textSize="14sp"
+         android:maxEms="25"
+         android:singleLine="true"
+         android:ellipsize="marquee"
+         android:focusable="true"
+         android:focusableInTouchMode="true"
+         android:textColor="#FFFFFF"
+         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/column"
+        android:layout_marginEnd="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

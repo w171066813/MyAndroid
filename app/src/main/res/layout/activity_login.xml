@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/login_bg"
+    android:background="@drawable/activity_login_bg"
+    android:layout_height="match_parent">
+     <EditText
+         style="@style/login_style"
+         android:layout_height="wrap_content"
+         android:id="@+id/usernamm"
+         android:layout_centerInParent="true"
+         android:background="@null"
+         android:hint="@string/username"
+         android:text="admin"
+         android:drawableLeft="@drawable/activity_login_username"/>
+     <View
+         style="@style/login_style"
+         android:layout_height="1dp"
+         android:layout_below="@+id/usernamm"
+         android:background="#666666"/>
+
+     <EditText
+         style="@style/login_style"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/usernamm"
+         android:layout_marginTop="5dp"
+         android:background="@null"
+         android:layout_centerInParent="true"
+         android:hint="@string/password"
+         android:text="admin"
+         android:drawableLeft="@drawable/activity_login_password"
+         android:id="@+id/password"/>
+     <View
+         style="@style/login_style"
+         android:layout_height="1dp"
+         android:layout_below="@+id/password"
+         android:background="#666666"/>
+     <Button
+         android:layout_width="150dp"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/password"
+         android:layout_centerInParent="true"
+         android:layout_marginTop="30dp"
+         android:text="@string/login_btn"
+         android:id="@+id/login_btn"/>
+
+     <Button
+         android:layout_width="150dp"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/login_btn"
+         android:layout_marginTop="30dp"
+         android:layout_centerInParent="true"
+         android:text="@string/login_regist"
+         android:id="@+id/regist_btn"/>
+
+</RelativeLayout>

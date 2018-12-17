@@ -1,6 +1,7 @@
 package com.tianpai.cwang.myandroid.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.tianpai.cwang.myandroid.http.api.GeeksApis;
 import com.tianpai.cwang.myandroid.model.ArticleModel;
 import com.tianpai.cwang.myandroid.model.BanerModel;
 import com.tianpai.cwang.myandroid.presenter.fragmentPresenter.HomePresenter;
+import com.tianpai.cwang.myandroid.ui.ArticleDetailsActivity;
 import com.tianpai.cwang.myandroid.utils.GlideImageLoader;
 import com.tianpai.cwang.myandroid.utils.LogUtils;
 import com.youth.banner.Banner;
@@ -151,7 +153,6 @@ public class HomeFragment extends Fragment implements HomeContract.view{
                 if(homeAdapter.getItemCount() == lastPosition+1){
                     homePresenter.loadMoreData();
                 }
-
             }
         });
     }
@@ -164,9 +165,10 @@ public class HomeFragment extends Fragment implements HomeContract.view{
     @Override
     public void showBanerData(BanerModel banerModel) {
         swipeRefreshLayout.setRefreshing(false);
-        ArrayList<String> urlList = new ArrayList<>();
-        ArrayList<String> titleList = new ArrayList<>();
+        final ArrayList<String> urlList = new ArrayList<>();
+        final ArrayList<String> titleList = new ArrayList<>();
         ArrayList<String> descList = new ArrayList<>();
+        final ArrayList<String> urlPath = new ArrayList<>();
         if(banerModel==null){
             return;
         }
@@ -175,6 +177,8 @@ public class HomeFragment extends Fragment implements HomeContract.view{
             urlList.add(dataBean.getImagePath());
             titleList.add(dataBean.getTitle());
             descList.add(dataBean.getDesc());
+            urlPath.add(dataBean.getUrl());
+
         }
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         //设置图片加载器
@@ -196,7 +200,7 @@ public class HomeFragment extends Fragment implements HomeContract.view{
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                LogUtils.d("Position:"+position);
+                startArticleDetailsActivity(urlPath.get(position),titleList.get(position));
             }
         });
 
@@ -212,11 +216,16 @@ public class HomeFragment extends Fragment implements HomeContract.view{
 
     @Override
     public void showRecycleViewData(ArticleModel articleModel) {
-
         homePresenter.initBanerData();
         models = new ArrayList<>();
         models.add(articleModel);
         homeAdapter = new HomeAdapter(mContext, models);
+        homeAdapter.setOnItemClickLitener(new HomeAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position,String urlPath,String title) {
+               startArticleDetailsActivity(urlPath,title);
+            }
+        });
         fragmentHomeRv.setAdapter(homeAdapter);
         setHeader(fragmentHomeRv);
     }
@@ -225,6 +234,16 @@ public class HomeFragment extends Fragment implements HomeContract.view{
     public void loadMoreData(ArticleModel articleModel) {
         swipeRefreshLayout.setRefreshing(false);
         homeAdapter.appendData(articleModel);
+    }
+
+
+    private void startArticleDetailsActivity(String url,String title){
+         Intent intent = new Intent(mContext,ArticleDetailsActivity.class);
+         intent.putExtra("urlPath",url);
+         intent.putExtra("title",title);
+         startActivity(intent);
+
+
     }
 
 

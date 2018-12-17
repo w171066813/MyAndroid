@@ -142,7 +142,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             default:
                 holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_d));
                 break;
-
+            //test
 //                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg));
 //                break;
         }

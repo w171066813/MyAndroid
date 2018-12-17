@@ -18,17 +18,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
 
     public abstract  void  initView();
-
     public abstract int getLayout();
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayout());
-        initView();
+        this.setContentView(this.getLayout());
         ButterKnife.bind(this);
-
+        initView();
     }
 
     @Override

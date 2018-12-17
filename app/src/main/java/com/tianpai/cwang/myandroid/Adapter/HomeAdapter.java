@@ -50,22 +50,34 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         if (getItemViewType(position) == HEARER_TYPE) {
             return ;
         } else {
             //分布加载
             int page = getPosition(position) / PAGESIZE ;
             int index = getPosition(position) % PAGESIZE ;
-            LogUtils.e(page+"");
-            LogUtils.e("index:"+ index);
-
-
             ArticleModel.DataBean.DatasBean data = articleModel.get(page).getData().getDatas().get(index);
             setItemBackground(holder,getPosition(position));
             holder.authorTv.setText(data.getAuthor());
             holder.titleTv.setText(data.getTitle());
             holder.columnTv.setText(data.getChapterName());
+
+
+            final String urlPath = data.getLink();
+            final String title =data.getTitle();
+            if (onItemClickListener != null)
+            {
+                holder.itemView.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        onItemClickListener.onItemClick(holder.itemView, position,urlPath,title);
+                    }
+                });
+
+            }
         }
 
     }
@@ -125,7 +137,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             titleTv = itemView.findViewById(R.id.title);
             columnTv = itemView.findViewById(R.id.column);
             relativeLayout = itemView.findViewById(R.id.fragment_home_rv_item_rl);
-
         }
     }
 
@@ -150,6 +161,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     }
 
+    public interface onItemClickListener{
+        void onItemClick(View view, int position,String url,String title);
+    }
+    private onItemClickListener onItemClickListener ;
+
+    public void setOnItemClickLitener(onItemClickListener mOnItemClickLitener)
+    {
+        this.onItemClickListener = mOnItemClickLitener;
+    }
 
 }
 

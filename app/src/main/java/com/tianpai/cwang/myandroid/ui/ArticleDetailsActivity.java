@@ -1,21 +1,17 @@
 package com.tianpai.cwang.myandroid.ui;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.just.agentweb.AgentWeb;
-import com.just.agentweb.LogUtils;
 import com.tianpai.cwang.myandroid.R;
 import com.tianpai.cwang.myandroid.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by cwang on 2018/12/17.
@@ -63,7 +59,7 @@ public class ArticleDetailsActivity extends BaseActivity {
         String urlPath = intent.getExtras().getString("urlPath");
         String title = intent.getExtras().getString("title");
         mToolbar.setTitle(title);
-        mToolbar.setLogo(R.drawable.toolbar_back);
+        mToolbar.setNavigationIcon(R.drawable.selector_article_details_toolbar_back);
         mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(mContainer, new LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator()

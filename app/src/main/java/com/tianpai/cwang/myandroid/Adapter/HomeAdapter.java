@@ -62,8 +62,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.authorTv.setText(data.getAuthor());
             holder.titleTv.setText(data.getTitle());
             holder.columnTv.setText(data.getChapterName());
-
-
             final String urlPath = data.getLink();
             final String title =data.getTitle();
             if (onItemClickListener != null)
@@ -141,7 +139,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     private void setItemBackground(ViewHolder holder,int position){
-        int index = position % 3 ;
+        int index = position % 4 ;
         Log.d(TAG, "setItemBackground: "+position);
         switch (index){
             case 1:
@@ -150,12 +148,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             case 2:
                 holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_c));
                 break;
-            default:
+            case 3:
                 holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_d));
                 break;
-            //test
-//                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg));
-//                break;
+            default:
+                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg));
+                break;
         }
 
 

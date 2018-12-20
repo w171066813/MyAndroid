@@ -91,6 +91,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view {
     private void startActivity(){
         Intent intent  = new Intent(this,MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

@@ -28,4 +28,6 @@ public interface GeeksApis {
 
     @GET("article/list/{num}/json")
     Observable<ArticleModel> getFeedArticleList(@Path("num") int num);
+
+
 }

@@ -2,6 +2,7 @@ package com.tianpai.cwang.myandroid.ui;
 
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -58,8 +59,7 @@ public class ArticleDetailsActivity extends BaseActivity {
         Intent intent = getIntent();
         String urlPath = intent.getExtras().getString("urlPath");
         String title = intent.getExtras().getString("title");
-        mToolbar.setTitle(title);
-        mToolbar.setNavigationIcon(R.drawable.selector_article_details_toolbar_back);
+        initToolbar(title);
         mAgentWeb = AgentWeb.with(this)
                 .setAgentWebParent(mContainer, new LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator()
@@ -84,8 +84,15 @@ public class ArticleDetailsActivity extends BaseActivity {
     }
 
 
-    private void initToolbar(){
-
+    private void initToolbar(String title){
+        mToolbar.setTitle(title);
+        mToolbar.setNavigationIcon(R.drawable.selector_article_details_toolbar_back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override

@@ -112,18 +112,14 @@ public class HomeFragment extends Fragment implements HomeContract.view{
     }
 
     private void initView() {
-
-
         gridLayoutManager = new GridLayoutManager(mContext, 1);
         //设置布局管理器
         fragmentHomeRv.setLayoutManager(gridLayoutManager);
         //设置为垂直布局，这也是默认的
         gridLayoutManager.setOrientation(OrientationHelper.VERTICAL);
-
         homePresenter = new HomePresenter(this);
         homePresenter.initRecycleData();
         initListener();
-
 
     }
 
@@ -242,9 +238,20 @@ public class HomeFragment extends Fragment implements HomeContract.view{
          intent.putExtra("urlPath",url);
          intent.putExtra("title",title);
          startActivity(intent);
-
-
     }
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        homePresenter.release();
+    }
+
+
+
+    public void jumpToTop(){
+        if(fragmentHomeRv!=null){
+            fragmentHomeRv.scrollToPosition(0);
+        }
+    }
 }

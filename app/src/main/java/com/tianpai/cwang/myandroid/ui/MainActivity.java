@@ -3,21 +3,18 @@ package com.tianpai.cwang.myandroid.ui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.tianpai.cwang.myandroid.R;
 import com.tianpai.cwang.myandroid.base.BaseActivity;
 import com.tianpai.cwang.myandroid.fragment.HomeFragment;
 import com.tianpai.cwang.myandroid.fragment.MusicFragment;
 import com.tianpai.cwang.myandroid.fragment.ReadingFragment;
-import com.tianpai.cwang.myandroid.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +25,8 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.fab)
     FloatingActionButton fab;
     @BindView(R.id.container)
-    RelativeLayout container;
+    CoordinatorLayout container;
+
     private HomeFragment homeFragment;
     private MusicFragment musicFragment;
     private ReadingFragment readingFragment;
@@ -110,23 +108,30 @@ public class MainActivity extends BaseActivity {
         homeFragment.jumpToTop();
     }
 
-    boolean snackBarIsShow = false ;
+    boolean snackBarIsShow = false;
+
     @Override
     public void onBackPressed() {
-        if(snackBarIsShow){
+        if (snackBarIsShow) {
             super.onBackPressed();
         }
-        snackBarIsShow = true ;
+        snackBarIsShow = true;
         Snackbar.make(container, "再点击一次退出", Snackbar.LENGTH_SHORT)
-               .setCallback(new Snackbar.Callback() {
-            @Override
-            public void onDismissed(Snackbar snackbar, int event) {
-                snackBarIsShow = false ;
-                LogUtils.d("SnackBar :  "+"dismiss");
-            }
-        }).show();
+                .setCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        snackBarIsShow = false;
+
+                    }
+                }).show();
 
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

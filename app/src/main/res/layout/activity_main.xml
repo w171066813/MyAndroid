@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.tianpai.cwang.myandroid.ui.MainActivity">
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+   <android.support.design.widget.AppBarLayout
+       android:layout_width="match_parent"
+       android:fitsSystemWindows="false"
+       android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+           android:layout_width="match_parent"
+           android:layout_height="60dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+          />
+   </android.support.design.widget.AppBarLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigation"
         android:id="@+id/fragment"
         />
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/fab_bg"
-        android:layout_marginBottom="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="70dp"
         android:layout_marginEnd="20dp"
         app:borderWidth="2dp"
         app:elevation="10dp"
         app:fabSize ="mini"
         android:id="@+id/fab"/>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

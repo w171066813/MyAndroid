@@ -13,7 +13,7 @@
          android:gravity="center_vertical"
          android:layout_marginStart="20dp"
          android:layout_marginTop="2dp"
-         android:textColor="#FFFFFF"
+         android:textColor="#000000"
          android:drawableStart="@drawable/author"
          android:id="@+id/author"/>
 
@@ -27,8 +27,21 @@
          android:ellipsize="marquee"
          android:focusable="true"
          android:focusableInTouchMode="true"
-         android:textColor="#FFFFFF"
+         android:textColor="#000000"
          android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/update_time"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        android:drawableStart="@drawable/home_item_time"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +49,7 @@
         android:layout_marginEnd="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textColor="#FFFFFF"
+        android:textColor="#0099ff"
         android:textSize="16sp"
         android:layout_marginBottom="5dp"
         android:layout_height="wrap_content" />

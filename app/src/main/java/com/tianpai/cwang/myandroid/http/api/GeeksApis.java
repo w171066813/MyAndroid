@@ -2,6 +2,10 @@ package com.tianpai.cwang.myandroid.http.api;
 
 import com.tianpai.cwang.myandroid.model.ArticleModel;
 import com.tianpai.cwang.myandroid.model.BanerModel;
+import com.tianpai.cwang.myandroid.model.KnowLedgeSysModel;
+import com.tianpai.cwang.myandroid.model.NaviModel;
+import com.tianpai.cwang.myandroid.model.WxArticle;
+import com.tianpai.cwang.myandroid.model.WxModel;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -30,4 +34,16 @@ public interface GeeksApis {
     Observable<ArticleModel> getFeedArticleList(@Path("num") int num);
 
 
+    @GET("/tree/json")
+    Flowable<KnowLedgeSysModel> getKnowLedgeData();
+
+    @GET("/wxarticle/chapters/json")
+    Flowable<WxModel>  getAuthor();
+
+
+    @GET("/wxarticle/list/{authorNum}/{page}/json")
+    Observable<WxArticle> getWxAuthorArticle(@Path("authorNum") int code, @Path("page") int page);
+
+    @GET("navi/json")
+    Flowable<NaviModel> getNavData();
 }

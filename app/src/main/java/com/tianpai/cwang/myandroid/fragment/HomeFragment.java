@@ -3,28 +3,21 @@ package com.tianpai.cwang.myandroid.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.tianpai.cwang.myandroid.Adapter.HomeAdapter;
 import com.tianpai.cwang.myandroid.R;
 import com.tianpai.cwang.myandroid.contract.HomeContract;
-import com.tianpai.cwang.myandroid.contract.LoginContract;
-import com.tianpai.cwang.myandroid.http.HttpManager;
-import com.tianpai.cwang.myandroid.http.api.GeeksApis;
 import com.tianpai.cwang.myandroid.model.ArticleModel;
 import com.tianpai.cwang.myandroid.model.BanerModel;
 import com.tianpai.cwang.myandroid.presenter.fragmentPresenter.HomePresenter;
@@ -36,20 +29,12 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.reactivex.FlowableSubscriber;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by cwang on 2018/11/30.
@@ -107,6 +92,8 @@ public class HomeFragment extends Fragment implements HomeContract.view{
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.d(TAG, "onDestroyView: ");
+        //这里需要注意 切换掉的时候 这边会进行解绑 导致 崩溃  在http比较慢的情况下
         homePresenter.release();
         unbinder.unbind();
     }

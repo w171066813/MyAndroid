@@ -9,4 +9,6 @@
     <string name="login_regist">Regist</string>
     <string name="username">请输入用户名</string>
     <string name="password">请输入密码</string>
+
+    <string name="scale_down_show_behavior">com.tianpai.cwang.myandroid.widget.MyFabBehavior</string>
 </resources>

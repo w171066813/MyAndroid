@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
+    android:background="#ecedf8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.tianpai.cwang.myandroid.ui.MainActivity">
@@ -14,12 +15,15 @@
         <android.support.v7.widget.Toolbar
            android:layout_width="match_parent"
            android:layout_height="60dp"
-            app:layout_scrollFlags="scroll|enterAlways"
+           android:background="#66b2e5"
+           android:id="@+id/activity_main_toolbar"
+           app:layout_scrollFlags="scroll|snap|enterAlways"
           />
    </android.support.design.widget.AppBarLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/fragment"
         />
     <android.support.design.widget.FloatingActionButton
@@ -38,6 +42,7 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:layout_behavior="@string/bye_burger_bottom_behavior"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" />
 

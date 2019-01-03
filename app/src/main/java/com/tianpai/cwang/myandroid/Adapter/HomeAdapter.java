@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.tianpai.cwang.myandroid.R;
 import com.tianpai.cwang.myandroid.model.ArticleModel;
-import com.tianpai.cwang.myandroid.utils.LogUtils;
 import com.tianpai.cwang.myandroid.widget.MaequeeText;
 
 import java.util.ArrayList;
@@ -62,6 +61,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.authorTv.setText(data.getAuthor());
             holder.titleTv.setText(data.getTitle());
             holder.columnTv.setText(data.getChapterName());
+            holder.updateTimeTv.setText(data.getNiceDate());
             final String urlPath = data.getLink();
             final String title =data.getTitle();
             if (onItemClickListener != null)
@@ -74,7 +74,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                         onItemClickListener.onItemClick(holder.itemView, position,urlPath,title);
                     }
                 });
-
             }
         }
 
@@ -125,7 +124,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView authorTv, columnTv;
+        TextView authorTv, columnTv,updateTimeTv;
         MaequeeText titleTv;
         RelativeLayout relativeLayout ;
 
@@ -135,26 +134,27 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             titleTv = itemView.findViewById(R.id.title);
             columnTv = itemView.findViewById(R.id.column);
             relativeLayout = itemView.findViewById(R.id.fragment_home_rv_item_rl);
+            updateTimeTv =itemView.findViewById(R.id.update_time);
         }
     }
 
     private void setItemBackground(ViewHolder holder,int position){
-        int index = position % 4 ;
-        Log.d(TAG, "setItemBackground: "+position);
-        switch (index){
-            case 1:
-                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_b));
-                break;
-            case 2:
-                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_c));
-                break;
-            case 3:
-                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_d));
-                break;
-            default:
+//        int index = position % 4 ;
+//        Log.d(TAG, "setItemBackground: "+position);
+//        switch (index){
+//            case 1:
+//                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_b));
+//                break;
+//            case 2:
+//                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_c));
+//                break;
+//            case 3:
+//                holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg_d));
+//                break;
+//            default:
                 holder.relativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.fragment_home_rv_item_bg));
-                break;
-        }
+//                break;
+//        }
 
 
     }

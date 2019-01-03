@@ -7,6 +7,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -26,6 +27,8 @@ public class MainActivity extends BaseActivity {
     FloatingActionButton fab;
     @BindView(R.id.container)
     CoordinatorLayout container;
+    @BindView(R.id.activity_main_toolbar)
+    Toolbar toolbar;
 
     private HomeFragment homeFragment;
     private MusicFragment musicFragment;
@@ -61,6 +64,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        setSupportActionBar(toolbar);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         homeFragment = new HomeFragment();
@@ -73,12 +77,15 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (type) {
             case 0:
+                toolbar.setTitle("Home");
                 ft.replace(R.id.fragment, homeFragment);
                 break;
             case 1:
+                toolbar.setTitle("Music");
                 ft.replace(R.id.fragment, musicFragment);
                 break;
             case 2:
+                toolbar.setTitle("Reading");
                 ft.replace(R.id.fragment, readingFragment);
                 break;
             default:

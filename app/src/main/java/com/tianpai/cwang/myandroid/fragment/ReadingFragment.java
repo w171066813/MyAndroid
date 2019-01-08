@@ -59,6 +59,26 @@ public class ReadingFragment extends Fragment {
     private void initView() {
         mContext = getActivity();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
+//        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//            @Override
+//            public int getSpanSize(int position) {
+//                //以下代码仅为上图示例为写，具体场景中应该根据需求具体编写
+//                if (position == 2) {
+//                    return 2;
+//                }
+//                return 1;
+//            }
+//
+//            //这个方法也很重要，但我还没搞清楚它的具体效果，从注释上来看，该方法是用于指定 item 在该行或该列上具体哪个位置，比如将GridLayoutManager设置为3行水平样式，那么第1个卡位就是在第一列的 0 位置，第2个卡位 1，一次类推。但该方法具体被调用的场景还没理清
+//            @Override
+//            public int getSpanIndex(int position, int spanCount) {
+//                return super.getSpanIndex(position, spanCount);
+//            }
+//        });
+////官方建议说，如果延用默认的 getSpanIndxe() 的实现逻辑的话，那么建议调用下述方法来进行优化，否则每次布局计算时会很耗性能。
+//        gridLayoutManager.getSpanSizeLookup().setSpanIndexCacheEnabled(true);
+
+
         ReadingAdapter readingAdapter = new ReadingAdapter(mContext, initData());
         readingAdapter.setItemClickListener(new ReadingAdapter.onItemClickListener() {
             @Override

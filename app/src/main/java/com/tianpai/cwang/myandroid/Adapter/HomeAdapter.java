@@ -79,6 +79,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     }
 
+
+
+
     private int getPosition(int i) {
         if (mHeaderView != null) {
             return i - 1;
